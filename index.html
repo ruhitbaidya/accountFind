@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Payoner Bank</title>
+
+</head>
+<body>
+    <div class="conrainer">
+        <div id="login_main_rea">
+            <h2 class="text-center">Wellcome to Paineer Bank</h2>
+            <div class="login-area">
+                <h4> Write here This Email & Password Then You LogIn</h4>
+
+                <p>Email: ruhitbaidya01@gmail.com</p>
+                <p>Password: ruhitS05#</p>
+                <br>
+                <br>
+                <h4>Login</h4>
+    
+                <input id="userEmail" type="text" class="form-control" placeholder="Email">
+                <br>
+                <input id="userPassword" type="text" class="form-control" placeholder="Password">
+                <br>
+                <button id="login" class="btn btn-success"> Enter</button>
+
+                <p id="wrongmatch" class="wrong text-center">Your Information Not Match Pleace Try Again</p>
+            </div>
+        </div>
+        <div id="transtion-area">
+            <div class="area-for-trans">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="card p-3 deposit">
+                            <h5>Deposit</h5>
+                            <h2>$ <span id="depostText">00</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="card p-3 withdraw">
+                            <h5>Withdraw</h5>
+                            <h2>$ <span id="withdrowText">00</span> </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="card p-3 balance">
+                            <h5>Balance</h5>
+                            <h2>$ <span id="mainBalance">00</span> </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <div class="card p-4 transfar-shadow">
+                            <h2>Deposit</h2>
+                            <input id="depostiAmount" class="form-control" type="text" placeholder="& amount Your went to deposit">
+                            <br>
+                            <br>
+                            <button id="add-deposit" class="btn btn-success">Deposit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-4 transfar-shadow">
+                            <h2>Withdraw</h2>
+                            <input id="withdrewAmount" class="form-control" type="text" placeholder="& amount Your went to deposit">
+                            <br>
+                            <br>
+                            <button id="diposit-withdraw" class="btn btn-success">Dithdraw</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<script>
+    // loin 
+    document.getElementById("login").addEventListener("click", function(){
+        const mainEmail = "ruhitbaidya01@gmail.com";
+        const mainPassword = "ruhitS05#";
+        const userEmail = document.getElementById("userEmail").value;
+        const userPassword = document.getElementById("userPassword").value;
+
+        if(mainEmail == userEmail && mainPassword == userPassword){
+            const doitwork = document.getElementById("login_main_rea");
+            doitwork.style.display = "none";
+            const trnasfar = document.getElementById("transtion-area");
+            trnasfar.style.display = "block";
+        }else{
+            document.getElementById("wrongmatch").style.display = "block";
+        }
+
+    });
+    // diposit
+    const dipostiButton = document.getElementById("add-deposit");
+    dipostiButton.addEventListener("click", function(){
+        const depostiAmount = document.getElementById("depostiAmount").value;
+        const dipositNumber = parseFloat(depostiAmount);
+
+        const depostText = document.getElementById("depostText").innerText;
+        const dipositshowNumber = parseFloat(depostText);
+
+        const totleDiposit = document.getElementById("mainBalance").innerText;
+        const convalu = parseFloat(totleDiposit);
+        const totleAmount = dipositNumber + dipositshowNumber;
+        const mainamount = dipositNumber + convalu;
+
+        document.getElementById("depostText").innerText = totleAmount;
+        document.getElementById("mainBalance").innerText = mainamount;
+        document.getElementById("depostiAmount").value = "";
+    });
+    
+    const withdrewButton = document.getElementById("diposit-withdraw");
+    withdrewButton.addEventListener("click", function(){
+       const withdrew = document.getElementById("withdrewAmount").value;
+       const withdewNumber = parseFloat(withdrew);
+
+       const withdrewText = document.getElementById("withdrowText").innerText;
+       const withdrewTextNumber = parseFloat(withdrewText);
+
+       const withdrewTotle = withdewNumber + withdrewTextNumber;
+       const totleDiposit = document.getElementById("mainBalance").innerText;
+        const convalu = parseFloat(totleDiposit);
+        const mainamount = -1 * withdewNumber +  convalu;
+        document.getElementById("mainBalance").innerText = mainamount;
+       document.getElementById("withdrowText").innerText = withdrewTotle;
+       document.getElementById("withdrewAmount").value = "";
+    });
+</script>
+</body>
+</html>
+

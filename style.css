@@ -1,0 +1,45 @@
+body{
+    padding:100px;
+}
+.login-area{
+    margin-top:50px;
+    padding:50px;
+    box-shadow: 5px 5px 10px gray;
+    border-radius:10px;
+}
+#transtion-area{
+    display:none;
+}
+.deposit{
+    background-color:slateblue;
+    color:#fff;
+}
+.withdraw{
+    background-color:lightsalmon;
+    color:#fff;
+}
+.balance{
+    background-color:orange;
+    color:#fff;
+}
+
+.card h2{
+    font-size:40px;
+}
+.our-button{
+    background-color:forestgreen;
+    display:inline;
+}
+.transfar-shadow{
+    box-shadow: 5px 5px 10px gray;
+}
+.login-area p{
+    margin:0;
+}
+.wrong{
+    color:red;
+    font-size:20px;
+}
+#wrongmatch{
+    display:none;
+}
